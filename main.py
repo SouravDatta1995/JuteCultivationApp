@@ -1,15 +1,10 @@
-from typing import Optional
-
 from fastapi import FastAPI
+
+from Routes import user, subject
+
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+app.include_router(user.router, prefix="/users", tags=["Users"], responses={404: {"description": "Not found"}})
+app.include_router(subject.router, prefix="/subjects", tags=["Subjects"], responses={404: {"description": "Not found"}})
