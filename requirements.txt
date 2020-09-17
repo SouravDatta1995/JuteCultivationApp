@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+FastAPI-SQLAlchemy
+alembic
+psycopg2
