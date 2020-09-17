@@ -1,4 +1,6 @@
-sudo docker container stop mycontainer
-sudo docker system prune -f
-sudo docker build -t myimage .
-sudo docker run -d --name mycontainer -p 5000:5000 myimage
+kill -9 $(lsof -t -i:5000)
+rm nohup.out
+git pull https://github.com/SouravDatta1995/JuteCultivationApp.git
+source /venv/bin/activate
+nohup uvicorn main:app --reload --host 0.0.0.0 --port 5000 &
+deactivate
