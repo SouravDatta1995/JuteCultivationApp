@@ -4,3 +4,5 @@ uvicorn
 FastAPI-SQLAlchemy
 alembic
 psycopg2
+SQLAlchemy
+pydantic
