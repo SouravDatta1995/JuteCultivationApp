@@ -3,29 +3,6 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class UserBase(BaseModel):
-    name: str
-    age: int
-
-
-class User(UserBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-class SubjectBase(BaseModel):
-    name: str
-
-
-class Subject(SubjectBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
 class JuteSurveyInputBase(BaseModel):
     name: str
     plot: str
@@ -36,7 +13,7 @@ class JuteSurveyInputBase(BaseModel):
     phosphorousamount: float
     pottasiumamount: float
     organiccarbonamount: float
-    dateofsowing: float
+    dateofsowing: datetime
     methodofsowing: int
     varietyused: int
     methodofweeding: int
@@ -51,6 +28,9 @@ class JuteSurveyInputBase(BaseModel):
     rainfall: float
     temperature: str
     humidity: str
+
+    class Config:
+        orm_mode = True
 
 
 class JuteSurveyInput(JuteSurveyInputBase):
